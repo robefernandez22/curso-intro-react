@@ -1,13 +1,9 @@
 import React from "react";
 import "./CreateTodoButton.css";
 
-export function CreateTodoButton({ todos, setTodos }) {
+export function CreateTodoButton(props) {
   const onClickButton = () => {
-    todos.push({
-      text: "Nuevo todo",
-      completed: false,
-    });
-    setTodos(todos);
+    props.setOpenModal((prevState) => !prevState);
   };
 
   return (
