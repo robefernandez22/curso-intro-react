@@ -2,11 +2,14 @@ import React, { useContext } from "react";
 import { TodoContext } from "../../Context/TodoContext";
 import { CreateTodoButton } from "../CreateTodoButton";
 import { TodoCounter } from "../TodoCounter";
+import { TodoLoading } from "../TodoLoading";
 import { TodoSearch } from "../TodoSearch";
+import { EmptyTodo } from "../EmptyTodo";
+import { TodoError } from "../TodoError";
+import { TodoForm } from "../TodoForm";
 import { TodoList } from "../TodoList";
 import { TodoItem } from "../TodoItem";
 import { Modal } from "../Modal";
-import { TodoForm } from "../TodoForm";
 
 export function AppUI() {
   const {
@@ -24,9 +27,9 @@ export function AppUI() {
       <TodoCounter completedTodos={1} items={2} />
       <TodoSearch />
       <TodoList>
-        {error && <p>Error...</p>}
-        {loading && <p>Cargando...</p>}
-        {!loading && !searchedTodos.length && <p>Crea tu primer TODO!...</p>}
+        {error && <TodoError error={error} />}
+        {loading && <TodoLoading />}
+        {!loading && !searchedTodos.length && <EmptyTodo />}
 
         {searchedTodos.map((todo) => (
           <TodoItem
