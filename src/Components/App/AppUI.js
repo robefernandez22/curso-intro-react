@@ -24,7 +24,7 @@ export function AppUI() {
 
   return (
     <React.Fragment>
-      <TodoCounter completedTodos={1} items={2} />
+      <TodoCounter />
       <TodoSearch />
       <TodoList>
         {error && <TodoError error={error} />}

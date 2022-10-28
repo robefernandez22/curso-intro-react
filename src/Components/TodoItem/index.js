@@ -1,23 +1,25 @@
 import React from "react";
+import { CompleteIcon } from "../TodoIcon/CompleteIcon";
+import { DeleteIcon } from "../TodoIcon/DeleteIcon";
 import "./TodoItem.css";
 
-export function TodoItem(props) {
-  const { text, completed, completeTodo, deleteTodo } = props;
-
+export function TodoItem({ text, completed, completeTodo, deleteTodo }) {
   return (
     <li className="todo-item">
-      <span
-        className={`icon icon-check ${completed && "icon-check--active"}`}
-        onClick={() => completeTodo(text)}
-      >
-        √
-      </span>
-      <p className={`todo-item-p ${completed && "todo-item-p--complete"}`}>
+      <CompleteIcon
+        completed={completed}
+        onComplete={() => {
+          completeTodo(text);
+        }}
+      />
+      <p className={`todo-item-p ${completed && "todo-item-p-complete"}`}>
         {text}
       </p>
-      <span className="icon icon-delete" onClick={() => deleteTodo(text)}>
-        X
-      </span>
+      <DeleteIcon
+        onDelete={() => {
+          deleteTodo(text);
+        }}
+      />
     </li>
   );
 }
